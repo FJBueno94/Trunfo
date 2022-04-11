@@ -16,7 +16,7 @@ class Form extends React.Component {
             name="name"
             placeholder="Nome da nova carta"
           />
-          <br/>
+          <br />
         </label>
         <label htmlFor="description">
           Desccrição:
