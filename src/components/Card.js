@@ -13,6 +13,7 @@ class Card extends React.Component {
       cardRare,
       cardTrunfo,
     } = this.props;
+
     return (
       <div>
         <h2>Pré visualização</h2>
