@@ -14,10 +14,10 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
-      cardRare: 'normal',
+      cardRare: '',
       cardTrunfo: false,
       // hasTrunfo: false,
-      isSaveButtonDisabled: false,
+      isSaveButtonDisabled: true,
     };
   }
 
@@ -27,6 +27,39 @@ class App extends React.Component {
 
     this.setState({
       [name]: value,
+    }, () => {
+      const maxValue = 90;
+      const minValue = 0;
+      const sumMax = 210;
+
+      const {
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+      } = this.state;
+
+      if (
+        cardName.length > 0
+      && cardDescription.length > 0
+      && cardImage.length > 0
+      && cardRare.length > 0
+      && (Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3)) <= sumMax
+      && Number(cardAttr1) >= minValue && Number(cardAttr1) <= maxValue
+      && Number(cardAttr2) >= minValue && Number(cardAttr2) <= maxValue
+      && Number(cardAttr3) >= minValue && Number(cardAttr3) <= maxValue
+      ) {
+        this.setState({
+          isSaveButtonDisabled: false,
+        });
+      } else {
+        this.setState({
+          isSaveButtonDisabled: true,
+        });
+      }
     });
   }
 
